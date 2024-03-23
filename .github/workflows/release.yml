@@ -56,17 +56,20 @@ jobs:
         include:
           - target: "x86_64-unknown-linux-gnu"
             os: "ubuntu-latest"
-          - target: "x86_64-unknown-linux-musl"
-            os: "ubuntu-latest"
     runs-on: ${{ matrix.os }}
     steps:
       - name: "Check out the repo"
         uses: actions/checkout@v4
-
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
+        
       - name: "Upload Binaries"
         uses: "taiki-e/upload-rust-binary-action@v1"
         with:
           bin: "tonic-autometrics"
+          target: ${{ matrix.target }}
+          archive: $bin-${{ matrix.target }}
+          ref: refs/tags/v${{ needs.get-tag.outputs.pkg-version }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
   push-to-registry:
