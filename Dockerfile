@@ -6,7 +6,7 @@ RUN apk add curl protoc musl-dev gzip git
 
 
 # tonic-autometrics
-RUN curl -sLO https://github.com/yistabraq/tonic-autometrics/releases/download/tonic-autometrics-x86_64-unknown-linux-gnu.tar.gz \
+RUN curl -sLO https://github.com/yistabraq/tonic-autometrics/releases/download/latest/tonic-autometrics-x86_64-unknown-linux-gnu.tar.gz \
   && tar -xvf tonic-autometrics-x86_64-unknown-linux-gnu.tar.gz \
   && chmod +x tonic-autometrics
 
