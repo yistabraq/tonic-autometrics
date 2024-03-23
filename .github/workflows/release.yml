@@ -60,6 +60,7 @@ jobs:
     steps:
       - name: "Check out the repo"
         uses: actions/checkout@v4
+        
       - name: Install Protoc
         uses: arduino/setup-protoc@v1
         
@@ -100,5 +101,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: istabraq/tonic-autometrics:latest,istabraq/tonic-autometrics:$GITHUB_SHA
+          tags: istabraq/tonic-autometrics:latest,istabraq/tonic-autometrics:v${{ needs.get-tag.outputs.pkg-version }}
           labels: ${{ steps.meta.outputs.labels }}
