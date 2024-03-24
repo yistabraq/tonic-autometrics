@@ -104,5 +104,4 @@ jobs:
           tags: istabraq/tonic-autometrics:latest,istabraq/tonic-autometrics:v${{ needs.get-tag.outputs.pkg-version }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            - VERSION: |
-              v${{ needs.get-tag.outputs.pkg-version }}
+            VERSION=v${{ needs.get-tag.outputs.pkg-version }}
